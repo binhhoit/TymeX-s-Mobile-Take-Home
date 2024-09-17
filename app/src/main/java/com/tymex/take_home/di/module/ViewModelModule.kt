@@ -15,5 +15,5 @@ val viewModelModule = module {
     viewModel<MainViewModel>{ MainViewModelImpl()}
     viewModel<WelcomeViewModel> { WelcomeViewModelImpl(get()) }
     viewModel<DashboardViewModel> { DashboardViewModelImpl(get()) }
-    viewModel<ProfileDetailsViewModel> { ProfileDetailsViewModelImpl(get()) }
+    viewModel<ProfileDetailsViewModel> { ProfileDetailsViewModelImpl() }
 }

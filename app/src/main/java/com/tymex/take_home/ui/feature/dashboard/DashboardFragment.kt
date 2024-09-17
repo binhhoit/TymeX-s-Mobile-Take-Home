@@ -27,7 +27,7 @@ class DashboardFragment : BaseFragment() {
     }
 
     fun navigateToDashboard() {
-        //findNavController().navigate(DashboardFragmentDirections.actionLoginFragmentToDashboardFragment())
+        findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToProfileDetailsFragment())
     }
 
 }

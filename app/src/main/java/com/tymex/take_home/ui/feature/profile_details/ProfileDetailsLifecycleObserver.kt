@@ -50,14 +50,14 @@ class ProfileDetailsLifecycleObserver(private val fragment: ProfileDetailsFragme
     private fun login() {
         fragment.apply {
             binding.apply {
-                viewModel.doLogin(edtDisplayName.text ?: "")
+
             }
         }
     }
 
     private fun observeData() {
         fragment.apply {
-            viewModel.loginLiveData.observe(viewLifecycleOwner) { state ->
+           /* viewModel.loginLiveData.observe(viewLifecycleOwner) { state ->
                 when (state) {
                     is DataState.Loading -> {
                         if (state.isLoading) showLoading() else hideLoading()
@@ -71,7 +71,7 @@ class ProfileDetailsLifecycleObserver(private val fragment: ProfileDetailsFragme
                        showError(Throwable(getString(R.string.fragment_login_can_t_login)))
                     }
                 }
-            }
+            }*/
         }
     }
 

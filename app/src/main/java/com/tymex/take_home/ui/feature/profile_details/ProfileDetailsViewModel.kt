@@ -6,7 +6,6 @@ import com.data.model.DataState
 
 abstract class ProfileDetailsViewModel: ViewModel() {
 
-    abstract val loginLiveData: LiveData<DataState<Boolean>>
-    abstract fun doLogin(userName: String)
+
 
 }

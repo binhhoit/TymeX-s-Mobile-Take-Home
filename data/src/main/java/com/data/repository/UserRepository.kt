@@ -1,7 +1,8 @@
 package com.data.repository
 
+import com.data.network.model.User
+
 interface UserRepository {
-    suspend fun login(useName: String): Boolean
+    suspend fun getListProfileUser(perPage: String, since: String): List<User>
     suspend fun getUserInfo():String
-    suspend fun deleteAccount():Boolean
 }
