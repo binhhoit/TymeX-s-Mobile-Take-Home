@@ -53,6 +53,11 @@ click continue.</string>
     <string name="fragment_login_can_t_login">Can\'t Login</string>
 
     <string name="error_something_wrong">Something went wrong!</string>
+    <string name="github_users">Github Users</string>
+    <string name="user_details">User Details</string>
+    <string name="following">Following</string>
+    <string name="follower">Follower</string>
+    <string name="blog">Blog</string>
 
 
 </resources>

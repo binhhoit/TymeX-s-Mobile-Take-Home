@@ -21,5 +21,8 @@ data class User(
     @SerializedName("events_url"          ) var eventsUrl         : String?  = null,
     @SerializedName("received_events_url" ) var receivedEventsUrl : String?  = null,
     @SerializedName("type"                ) var type              : String?  = null,
-    @SerializedName("site_admin"          ) var siteAdmin         : Boolean? = null
+    @SerializedName("site_admin"          ) var siteAdmin         : Boolean? = null,
+    @SerializedName("followers"           ) var followers         : Int?     = null,
+    @SerializedName("following"           ) var following         : Int?     = null,
+    @SerializedName("location"            ) var location          : String?  = null,
 ) : Serializable

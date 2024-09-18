@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.base.fragment.BaseFragment
 import com.tymex.takehome.databinding.FragmentDashboardBinding
 import com.tymex.takehome.databinding.FragmentProfileDetailsBinding
@@ -15,6 +16,7 @@ class ProfileDetailsFragment : BaseFragment() {
     private var _binding: FragmentProfileDetailsBinding? = null
     val binding get() = _binding!!
     val viewModel: ProfileDetailsViewModel by viewModel()
+    val argument: ProfileDetailsFragmentArgs by navArgs()
 
     override val lifecycleObserver = ProfileDetailsLifecycleObserver(this)
 
@@ -27,8 +29,8 @@ class ProfileDetailsFragment : BaseFragment() {
         return binding.root
     }
 
-    fun navigateToDashboard() {
-        //findNavController().navigate(ProfileDetailsDirections.actionLoginFragmentToDashboardFragment())
+    fun back() {
+        findNavController().popBackStack()
     }
 
 }

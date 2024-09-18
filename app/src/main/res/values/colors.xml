@@ -16,7 +16,7 @@
     <color name="warm_pink">#ff4f70</color>
     <color name="pinkish_grey">#cecece</color>
     <color name="grey_label">#B2B2B2</color>
-    <color name="dark_gray">#5E5E5E</color>
+    <color name="dark_gray">#505765</color>
     <color name="gray_b0">#B0B0B0</color>
     <color name="red">#DB011C</color>
     <color name="grey_e6">#E6E6E6</color>
@@ -36,4 +36,5 @@
     <color name="yellow_light">#FFF7EA</color>
     <color name="white_f6">#F6F6F6</color>
     <color name="black">#000000</color>
+    <color name="light_grey">#EEF0F2</color>
 </resources>

@@ -15,18 +15,23 @@ class DashboardLifecycleObserver(private val fragment: DashboardFragment) :
     DefaultLifecycleObserver {
 
     private val adapter by lazy { ProfileUsersAdapter() }
-    private var perPage = 2
+    private var perPage = 20
     private var since = 1
     private var isLoading = false
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         fragment.viewModel.getProfileUsers(perPage.toString(), since.toString())
-        fragment.binding.apply {
-            rcvUserProfile.adapter = adapter
-        }
+        initAdapter()
         initScrollListener()
         observeData()
+    }
+
+    private fun initAdapter() {
+        fragment.binding.apply {
+            rcvUserProfile.adapter = adapter
+            adapter.callback = { user -> fragment.navigateToProfileDetail(user) }
+        }
     }
 
     private fun initScrollListener() {
@@ -83,6 +88,8 @@ class DashboardLifecycleObserver(private val fragment: DashboardFragment) :
 
                     is DataState.Failure -> {
                         showError(Throwable(getString(R.string.error_something_wrong)))
+                        isLoading = false
+                        adapter.notifyItemRemoved(adapter.itemCount)
                     }
                 }
             }

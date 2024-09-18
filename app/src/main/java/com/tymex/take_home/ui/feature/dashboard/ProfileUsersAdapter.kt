@@ -1,6 +1,8 @@
 package com.tymex.take_home.ui.feature.dashboard
 
 import android.annotation.SuppressLint
+import android.text.Html
+import android.text.method.LinkMovementMethod
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -16,7 +18,7 @@ import com.tymex.takehome.databinding.ItemUserInfoBinding
 class ProfileUsersAdapter
     : ListAdapter<UserDTO, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
 
-    var callback: (String) -> Unit = {}
+    var callback: (UserDTO) -> Unit = {}
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return if (viewType == VIEW_TYPE_ITEM) {
@@ -54,13 +56,16 @@ class ProfileUsersAdapter
                 .placeholder(R.drawable.ic_logo)
                 .centerCrop()
                 .into(rivAvatar)
-            root.setOnClickListener { item.login?.let { callback.invoke(it) } }
+
+            tvUrlProfile.text =  Html.fromHtml(item.htmlUrl, Html.FROM_HTML_MODE_COMPACT)
+            tvUrlProfile.movementMethod = LinkMovementMethod.getInstance()
+            root.setOnClickListener { item.login?.let { callback.invoke(item) } }
+
         }
     }
 
     inner class ViewHolderLoading(val binding: ItemLoadMoreBinding) :
-        RecyclerView.ViewHolder(binding.root) {
-    }
+        RecyclerView.ViewHolder(binding.root)
 
     companion object {
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserDTO>() {
