@@ -1,12 +1,17 @@
 package com.data.domain.user
 
+import com.data.common.SharePreferenceManager
 import com.data.network.model.UserDTO
 import com.data.repository.UserRepository
 import kotlinx.coroutines.flow.flow
 
-class UsersUseCase(private val userRepository: UserRepository) {
+class UsersUseCase(private val userRepository: UserRepository,
+                   private var localData: SharePreferenceManager) {
+
     fun getListProfileUser(perPage: String, since: String) = flow {
         val result = userRepository.getListProfileUser(perPage = perPage, since = since)
+        localData.users = result
+
         emit(result.map {
             UserDTO(
                 login = it.login,

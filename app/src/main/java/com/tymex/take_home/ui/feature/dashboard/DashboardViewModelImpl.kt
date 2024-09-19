@@ -28,7 +28,7 @@ class DashboardViewModelImpl(private val usersUseCase: UsersUseCase): DashboardV
             }
             .onEach {
                 listProfileUsers.addAll(it)
-                _usersLiveData.value = DataState.Success(listProfileUsers)
+                _usersLiveData.value = DataState.Success(listProfileUsers.distinctBy { user -> user.login })
             }
             .catch {
                 _usersLiveData.value = DataState.Failure(it)

@@ -2,9 +2,11 @@ package com.data.common
 
 import android.content.Context
 import android.content.SharedPreferences
+import com.data.network.model.User
 import com.google.gson.Gson
-import java.lang.Exception
+import com.google.gson.reflect.TypeToken
 import java.util.Locale
+import kotlin.Exception
 
 class SharePreferenceManager constructor(app: Context) {
 
@@ -13,8 +15,7 @@ class SharePreferenceManager constructor(app: Context) {
         private const val USER_TOKEN = "user_token"
         private const val LOCALE_KEY = "locale_key"
         private const val FIRST_OPEN_APP = "first_open_app"
-        private const val URI_FOLDER_KEY = "uri_folder_key"
-        private const val USER_KEY = "user_key"
+        private const val USERS_KEY = "users_key"
 
         // For Singleton instantiation
         @Volatile
@@ -53,11 +54,17 @@ class SharePreferenceManager constructor(app: Context) {
         }
         set(value) = sharedPreferences.put { putString(LOCALE_KEY, Gson().toJson(value)) }
 
-    var firstOpenApp: Boolean
-        get() = sharedPreferences.getBoolean(FIRST_OPEN_APP, true)
-        set(value) = sharedPreferences.put { putBoolean(FIRST_OPEN_APP, value) }
-
-    var userNameInfo: String
-        get() = sharedPreferences.getString(USER_KEY, "") ?: ""
-        set(value) = sharedPreferences.put { putString(USER_KEY, value) }
+    var users: List<User>?
+        get() = try {
+            val value = sharedPreferences.getString(USERS_KEY, "")
+            val itemType = object : TypeToken<List<User>>() {}.type
+            Gson().fromJson(value, itemType)
+        } catch (e: Exception) {
+            listOf()
+        }
+        set(value) {
+            sharedPreferences.put {
+                putString(USERS_KEY, Gson().toJson(value));
+            }
+        }
 }
