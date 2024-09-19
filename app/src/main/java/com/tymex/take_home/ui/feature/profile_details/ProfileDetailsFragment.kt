@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.base.fragment.BaseFragment
-import com.tymex.takehome.databinding.FragmentDashboardBinding
 import com.tymex.takehome.databinding.FragmentProfileDetailsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 

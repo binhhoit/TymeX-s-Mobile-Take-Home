@@ -43,9 +43,6 @@ import com.base.utils.DeviceUtil.Companion.PERMISSION_WRITE_STORAGE_REQUEST_CODE
 import com.base.viewmodel.CommonView
 import retrofit2.HttpException
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 abstract class BaseActivity : AppCompatActivity(), CommonView {
 
     private var mCapturedPath: String? = null
