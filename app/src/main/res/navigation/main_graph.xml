@@ -34,6 +34,11 @@
         android:id="@+id/profileDetailsFragment"
         android:name="com.tymex.take_home.ui.feature.profile_details.ProfileDetailsFragment"
         android:label="ProfileDetailsFragment"
-        tools:layout="@layout/fragment_profile_details"/>
+        tools:layout="@layout/fragment_profile_details">
+        <argument
+            android:name="user_info"
+            app:argType="com.data.network.model.UserDTO"
+            app:nullable="true" />
+    </fragment>
 
 </navigation>

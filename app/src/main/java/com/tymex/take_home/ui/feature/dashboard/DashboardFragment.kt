@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.findNavController
 import com.base.fragment.BaseFragment
+import com.data.network.model.UserDTO
 import com.tymex.takehome.databinding.FragmentDashboardBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -26,8 +27,8 @@ class DashboardFragment : BaseFragment() {
         return binding.root
     }
 
-    fun navigateToDashboard() {
-        //findNavController().navigate(DashboardFragmentDirections.actionLoginFragmentToDashboardFragment())
+    fun navigateToProfileDetail(userDTO: UserDTO) {
+        findNavController().navigate(DashboardFragmentDirections.actionDashboardFragmentToProfileDetailsFragment(userInfo = userDTO))
     }
 
 }

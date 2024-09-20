@@ -12,8 +12,8 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val viewModelModule = module {
-    viewModel<MainViewModel>{ MainViewModelImpl()}
-    viewModel<WelcomeViewModel> { WelcomeViewModelImpl(get()) }
+    viewModel<MainViewModel> { MainViewModelImpl() }
+    viewModel<WelcomeViewModel> { WelcomeViewModelImpl() }
     viewModel<DashboardViewModel> { DashboardViewModelImpl(get()) }
     viewModel<ProfileDetailsViewModel> { ProfileDetailsViewModelImpl(get()) }
 }

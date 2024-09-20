@@ -20,5 +20,6 @@
     <color name="success_color">#23a15c</color>
     <color name="text_color">#414141</color>
     <color name="divider_color">#C7CED7</color>
+    <color name="greyF7">#F7F7F7</color>
 
 </resources>

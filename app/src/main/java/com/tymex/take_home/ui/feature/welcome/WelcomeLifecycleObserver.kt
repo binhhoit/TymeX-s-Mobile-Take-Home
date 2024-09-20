@@ -15,7 +15,7 @@ class WelcomeLifecycleObserver(private val fragment: WelcomeFragment)
         fragment.apply {
             lifecycleScope.launch {
                 delay(3000)
-                //navigateToDashboardScreen()
+                navigateToDashboardScreen()
             }
 
             pbLoading.postDelayed({

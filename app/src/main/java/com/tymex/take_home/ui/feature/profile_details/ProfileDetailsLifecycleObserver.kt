@@ -1,70 +1,53 @@
 package com.tymex.take_home.ui.feature.profile_details
 
-import android.text.TextUtils
-import androidx.core.view.isVisible
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
+import com.bumptech.glide.Glide
 import com.data.model.DataState
-import com.tymex.take_home.ui.feature.dashboard.DashboardFragment
+import com.data.network.model.UserDTO
 import com.tymex.takehome.R
 
 class ProfileDetailsLifecycleObserver(private val fragment: ProfileDetailsFragment) : DefaultLifecycleObserver {
 
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
-        validInputName()
-        actionButtonLogin()
+        initView()
+        setDataProfile(fragment.argument.userInfo)
         observeData()
+
     }
 
-    private fun validInputName() {
+    private fun initView() {
         fragment.apply {
-            binding.apply {
-                edtDisplayName.addTextChangedListener { uName ->
-                    btnLogin.isEnabled = false
-                    if (TextUtils.isEmpty(uName)) {
-                        tvError.isVisible = true
-                        tvError.text =
-                            getString(R.string.fragment_login_valid_name_empty)
-                    } else if (uName!!.length <= 4) {
-                        tvError.isVisible = true
-                        tvError.text =
-                            getString(R.string.fragment_login_valid_name_short)
-                    } else {
-                        tvError.isVisible = false
-                        btnLogin.isEnabled = true
-                    }
-                }
-            }
+           binding.apply {
+               ivBack.setOnClickListener{ back() }
+           }
+            viewModel.getInfoDetailsUser(argument.userInfo?.login ?: "")
         }
     }
 
-    private fun actionButtonLogin() {
-        fragment.binding.apply {
-            btnLogin.setOnClickListener {
-                login()
-            }
-        }
-    }
-
-    private fun login() {
+    private fun setDataProfile(user: UserDTO?) {
         fragment.apply {
-            binding.apply {
-                viewModel.doLogin(edtDisplayName.text ?: "")
-            }
+            binding.userInfo = user
+            Glide
+                .with(requireContext())
+                .load(user?.avatarUrl)
+                .placeholder(R.drawable.ic_logo)
+                .centerCrop()
+                .into(binding.rivAvatar)
         }
     }
 
     private fun observeData() {
         fragment.apply {
-            viewModel.loginLiveData.observe(viewLifecycleOwner) { state ->
+            viewModel.infoDetailLiveData.observe(viewLifecycleOwner) { state ->
                 when (state) {
                     is DataState.Loading -> {
                         if (state.isLoading) showLoading() else hideLoading()
                     }
 
                     is DataState.Success -> {
-                       navigateToDashboard()
+                       setDataProfile(state.data)
                     }
 
                     is DataState.Failure -> {

@@ -15,8 +15,8 @@
 
             <ImageView
                 android:id="@+id/iv_logo"
-                android:layout_width="@dimen/_277sdp"
-                android:layout_height="@dimen/_200sdp"
+                android:layout_width="@dimen/_150sdp"
+                android:layout_height="@dimen/_100sdp"
                 android:src="@drawable/ic_logo" />
 
         </androidx.constraintlayout.motion.widget.MotionLayout>

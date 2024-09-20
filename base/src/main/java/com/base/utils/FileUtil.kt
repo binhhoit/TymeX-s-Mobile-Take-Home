@@ -7,9 +7,6 @@ import android.provider.MediaStore
 import android.text.TextUtils
 import java.io.File
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 class FileUtil {
 
     companion object {

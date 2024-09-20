@@ -1,5 +1,5 @@
 <resources>
-    <string name="appname">Milwaukee Loyalty</string>
+    <string name="appname">TymeX\'s Mobile Take Home</string>
     <string name="error">Error</string>
     <string name="unknown_error">The system has returned an unknown error. \nPlease try again</string>
     <string name="warning">Warning</string>

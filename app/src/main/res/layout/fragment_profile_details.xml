@@ -6,13 +6,14 @@
     <data>
 
         <variable
-            name="showIncorrectPassword"
-            type="boolean" />
+            name="userInfo"
+            type="com.data.network.model.UserDTO" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@color/colorWhite">
 
         <androidx.constraintlayout.widget.Guideline
             android:id="@+id/gl_start"
@@ -28,71 +29,236 @@
             android:orientation="vertical"
             app:layout_constraintGuide_end="@dimen/_30sdp" />
 
-        <ImageView
-            android:id="@+id/iv_logo"
-            android:layout_width="@dimen/_277sdp"
-            android:layout_height="@dimen/_150sdp"
-            android:src="@drawable/ic_logo"
-            android:layout_marginTop="@dimen/_100hsdp"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ctl_title_page"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_60hsdp"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
             app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/tv_title"
+            <ImageView
+                android:id="@+id/iv_back"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="@dimen/_30sdp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_back"
+                android:padding="@dimen/_5sdp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@string/user_details"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_15ssp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/mcv_info_user"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:fontFamily="@font/helvetica_neue_medium"
+            android:outlineAmbientShadowColor="@color/black"
+            android:outlineSpotShadowColor="@color/black"
+            app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="@dimen/_3sdp"
+            app:cardCornerRadius="@dimen/_10sdp"
+            app:cardUseCompatPadding="true"
+            android:layout_marginTop="@dimen/_30hsdp"
+            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            app:layout_constraintStart_toStartOf="@id/gl_start"
+            app:layout_constraintTop_toBottomOf="@id/ctl_title_page"
+            tools:ignore="UnusedAttribute">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/ctl_avatar"
+                    android:layout_width="@dimen/_80.5hsdp"
+                    android:layout_height="@dimen/_80.5hsdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:background="@drawable/bg_layout_avatar"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <com.makeramen.roundedimageview.RoundedImageView
+                        android:id="@+id/riv_avatar"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_margin="@dimen/_5hsdp"
+                        android:src="@drawable/ic_logo"
+                        app:riv_corner_radius="@dimen/_40.5hsdp" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <TextView
+                    android:id="@+id/tv_display_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_20.5hsdp"
+                    android:fontFamily="@font/roboto_bold"
+                    android:textColor="@color/dark_gray"
+                    android:textSize="@dimen/_13ssp"
+                    android:text="@{userInfo.login}"
+                    app:layout_constraintStart_toEndOf="@id/ctl_avatar"
+                    app:layout_constraintTop_toTopOf="@id/ctl_avatar" />
+
+                <View
+                    android:id="@+id/v_line"
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="@dimen/_5hsdp"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    android:background="@color/light_grey"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/tv_display_name"
+                    app:layout_constraintTop_toBottomOf="@id/tv_display_name" />
+
+                <ImageView
+                    android:layout_width="@dimen/_20sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:layout_marginTop="@dimen/_5hsdp"
+                    android:src="@drawable/ic_location"
+                    app:layout_constraintStart_toStartOf="@id/tv_display_name"
+                    app:layout_constraintTop_toBottomOf="@id/v_line"/>
+
+                <TextView
+                    android:id="@+id/tv_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_10hsdp"
+                    android:layout_marginStart="@dimen/_25sdp"
+                    android:fontFamily="@font/roboto_light"
+                    android:textSize="@dimen/_10ssp"
+                    android:text="@{userInfo.location}"
+                    app:layout_constraintStart_toStartOf="@id/tv_display_name"
+                    app:layout_constraintTop_toBottomOf="@id/v_line" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <LinearLayout
+            android:id="@+id/ll_follower"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:text="Welcome TymeX"
-            android:textColor="@color/colorBlack"
-            android:textSize="@dimen/_25ssp"
-            android:layout_marginTop="@dimen/_120hsdp"
-            app:layout_constraintEnd_toEndOf="@id/gl_end"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_30hsdp"
+            app:layout_constraintEnd_toStartOf="@id/ll_following"
             app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toTopOf="@id/iv_logo" />
+            app:layout_constraintTop_toBottomOf="@id/mcv_info_user">
 
-        <com.tymex.take_home.ui.feature.widgets.AppEditText
-            android:id="@+id/edt_display_name"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_62hsdp"
-            app:hint="Please enter the name"
-            android:layout_marginTop="@dimen/_50hsdp"
+            <RelativeLayout
+                android:layout_width="@dimen/_40hsdp"
+                android:layout_height="@dimen/_40hsdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/bg_circle_grey_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="@dimen/_7sdp"
+                    android:src="@drawable/ic_followers" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@{userInfo.followers == null ? Integer.toString(0) : userInfo.followers.toString() + `+`}"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/follower"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_following"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
             app:layout_constraintEnd_toEndOf="@id/gl_end"
-            app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toBottomOf="@id/tv_title"
-            tools:ignore="RtlSymmetry" />
+            app:layout_constraintStart_toEndOf="@id/ll_follower"
+            app:layout_constraintTop_toTopOf="@id/ll_follower">
+
+            <RelativeLayout
+                android:layout_width="@dimen/_40hsdp"
+                android:layout_height="@dimen/_40hsdp"
+                android:layout_margin="@dimen/_5sdp"
+                android:background="@drawable/bg_circle_grey_light"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:padding="@dimen/_7sdp"
+                    android:src="@drawable/ic_following" />
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_medium"
+                android:text="@{userInfo.following == null ? Integer.toString(0) : userInfo.following.toString()+ `+`}"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_13ssp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto_light"
+                android:text="@string/following"
+                android:textColor="@color/dark_gray"
+                android:textSize="@dimen/_13ssp" />
+
+        </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_error"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10hsdp"
-            android:fontFamily="@font/helvetica_neue_regular"
-            android:gravity="start"
-            android:lineSpacingExtra="@dimen/_4ssp"
-            android:layout_marginStart="5dp"
-            android:textColor="@color/colorRedDB"
-            android:textSize="@dimen/_10ssp"
-            android:visibility="invisible"
-            app:layout_constraintEnd_toEndOf="@id/gl_end"
-            app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toBottomOf="@id/edt_display_name"/>
+            android:fontFamily="@font/roboto_bold"
+            android:text="@string/blog"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_20ssp"
+            android:layout_marginTop="@dimen/_30hsdp"
+            app:layout_constraintTop_toBottomOf="@id/ll_following"
+            app:layout_constraintStart_toStartOf="@id/gl_start"/>
 
-        <com.tymex.take_home.ui.feature.widgets.AppButton
-            android:id="@+id/btn_login"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/_56hsdp"
-            android:layout_marginTop="@dimen/_45hsdp"
-            android:enabled="false"
-            android:text="Sign In"
-            android:textAllCaps="false"
-            android:textColor="@color/colorWhite"
-            android:textSize="@dimen/_12ssp"
-            app:layout_constraintEnd_toEndOf="@id/gl_end"
-            app:layout_constraintStart_toStartOf="@id/gl_start"
-            app:layout_constraintTop_toBottomOf="@id/edt_display_name" />
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto_light"
+            android:autoLink="web"
+            android:text="@{userInfo.htmlUrl}"
+            android:textSize="@dimen/_13ssp"
+            android:layout_marginTop="@dimen/_70hsdp"
+            android:textColor="@color/dark_gray"
+            app:layout_constraintTop_toBottomOf="@id/ll_following"
+            app:layout_constraintStart_toStartOf="@id/gl_start"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

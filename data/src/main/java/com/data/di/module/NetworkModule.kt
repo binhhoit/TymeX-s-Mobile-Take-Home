@@ -4,7 +4,6 @@ import android.annotation.SuppressLint
 import com.data.BuildConfig
 import com.data.di.module.NetworkModuleConstants.KEY_AUTHORIZATION
 import com.data.di.module.NetworkModuleConstants.TIME_OUT
-import com.data.di.module.NetworkModuleConstants.TOKEN
 import com.data.network.intercepter.ConnectivityInterceptor
 import com.data.network.remote.ServiceAPI
 import com.skydoves.sandwich.adapters.ApiResponseCallAdapterFactory
@@ -31,7 +30,7 @@ val networkModule = module {
 
 private fun getHttpLoggingInterceptor(): HttpLoggingInterceptor {
     val interceptor = HttpLoggingInterceptor()
-    interceptor.level = HttpLoggingInterceptor.Level.BASIC
+    interceptor.level = HttpLoggingInterceptor.Level.BODY
     return interceptor
 }
 
@@ -67,12 +66,6 @@ private fun okHttpClient(connectivityInterceptor: ConnectivityInterceptor): OkHt
         .sslSocketFactory(sslSocketFactory, trustAllCerts[0] as X509TrustManager)
         .addInterceptor(getHttpLoggingInterceptor())
         .addInterceptor(connectivityInterceptor)
-        .addInterceptor { chain ->
-            val request = chain.request()
-            val newBuilder: Request.Builder = request.newBuilder()
-                .header(KEY_AUTHORIZATION, "Bearer $TOKEN")
-            chain.proceed(newBuilder.build())
-        }
         .connectionSpecs(Collections.singletonList(spec))
         .retryOnConnectionFailure(true)
         .connectTimeout(TIME_OUT.toLong(), TimeUnit.MILLISECONDS)
@@ -98,7 +91,4 @@ private object NetworkModuleConstants {
     const val KEY_AUTHORIZATION = "Authorization"
     const val VALUE_CONTENT_TYPE = "application/json"
     const val KEY_LANGUAGE_CODE = "Accept-Language"
-
-    const val TOKEN =
-        "sk_test_51LQ1BkErmCZ0gli9G05bvptmofxjz8mG3gTNEAjY6CKHT2wYkCGXEI6zGacE3axxueL4nbGmGCnHJZLJNvPrJLvf00NvJHMM8i"
 }

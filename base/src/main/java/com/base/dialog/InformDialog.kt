@@ -6,9 +6,6 @@ import android.text.TextUtils
 import com.base.R
 import com.base.databinding.DialogInformBinding
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 class InformDialog(context: Context) : BaseDialog<DialogInformBinding>(context) {
 
     private var mConfirmAction: (() -> Unit)? = null

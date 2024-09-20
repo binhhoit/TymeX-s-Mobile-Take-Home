@@ -15,9 +15,6 @@ import java.util.concurrent.locks.ReentrantLock
 import kotlin.math.roundToInt
 
 
-/**
- * Created by vophamtuananh on 12/24/17.
- */
 
 const val DELAY_TRANSITION_TIME: Long = 700
 inline fun <reified T> Activity.start(clearBackStack: Boolean = false, bundle: Bundle? = null, activityOptions: Bundle? = null) {

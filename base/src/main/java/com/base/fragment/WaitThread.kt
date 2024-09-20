@@ -2,9 +2,6 @@ package com.base.fragment
 
 import java.lang.ref.WeakReference
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 class WaitThread(fragment: ViewModelFragment) : Thread() {
 
     private var fragmentWeak: WeakReference<ViewModelFragment>? = null

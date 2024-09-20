@@ -26,7 +26,7 @@
             android:layout_height="match_parent"
             android:minHeight="@dimen/_62hsdp"
             android:textColor="@color/colorBlack"
-            android:fontFamily="@font/helvetica_neue_regular"
+            android:fontFamily="@font/roboto_regular"
             android:textSize="@dimen/_13ssp" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,7 +37,7 @@
         android:layout_marginTop="@dimen/_13hsdp"
         android:layout_marginStart="@dimen/_15sdp"
         android:textSize="@dimen/_10ssp"
-        android:fontFamily="@font/helvetica_neue_medium"
+        android:fontFamily="@font/roboto_medium"
         android:textColor="@color/colorRedDB"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_5sdp"
         android:textSize="@dimen/_10ssp"
-        android:fontFamily="@font/helvetica_neue_italic"
+        android:fontFamily="@font/roboto_italic"
         android:textColor="@color/black"
         app:layout_constraintStart_toEndOf="@id/tv_label_one"
         app:layout_constraintTop_toTopOf="@id/tv_label_one"/>
@@ -61,7 +61,7 @@
         android:gravity="top"
         android:layout_marginStart="@dimen/_5sdp"
         android:textSize="@dimen/_10ssp"
-        android:fontFamily="@font/helvetica_neue_italic"
+        android:fontFamily="@font/roboto_italic"
         android:textColor="@color/colorRedDB"
         app:layout_constraintStart_toEndOf="@id/tv_label_second"
         app:layout_constraintTop_toTopOf="@id/tv_label_one"

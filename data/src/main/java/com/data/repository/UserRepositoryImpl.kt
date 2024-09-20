@@ -1,23 +1,39 @@
 package com.data.repository
 
 import com.data.common.SharePreferenceManager
-import java.util.UUID
+import com.data.network.model.User
+import com.data.network.remote.ServiceAPI
 
-class UserRepositoryImpl constructor(private var localData : SharePreferenceManager) : UserRepository {
-    override suspend fun login(useName: String): Boolean {
-        localData.firstOpenApp = true
-        localData.userToken = UUID.randomUUID().toString()
-        localData.userNameInfo = useName
-        return true
+class UserRepositoryImpl constructor(private var localData : SharePreferenceManager,
+                                     private var serviceAPI: ServiceAPI) : UserRepository {
+
+    private var firstLoadUsers = true
+
+    /**
+    * The function can load new data when first open app or second request.
+    * If local have data will priority load fist.
+    * @param perPage limit on page
+    * @param since number page request
+    * */
+    override suspend fun getListProfileUser(
+        perPage: String,
+        since: String
+    ): List<User> {
+        val usersLocal = localData.users
+        return if (firstLoadUsers && !usersLocal.isNullOrEmpty()) {
+            firstLoadUsers = false
+            usersLocal
+        } else {
+            firstLoadUsers = false
+            serviceAPI.getListProfileUser(perPage, since)
+        }
     }
 
-    override suspend fun getUserInfo(): String {
-        return localData.userNameInfo
-    }
+    /**
+    * function load details info user
+    * @param userName the name address for request info user
+    * */
+    override suspend fun getUserInfo(userName: String) = serviceAPI.getUserInfo(userName)
 
-    override suspend fun deleteAccount(): Boolean {
-        localData.clearData()
-        return true
-    }
 
 }

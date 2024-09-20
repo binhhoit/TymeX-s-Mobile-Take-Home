@@ -7,9 +7,6 @@ import android.view.ViewGroup
 import com.base.R
 import com.base.databinding.DialogConfirmBinding
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 class ConfirmDialog(context: Context) : BaseDialog<DialogConfirmBinding>(context) {
 
     private var mYesAction: (() -> Unit)? = null

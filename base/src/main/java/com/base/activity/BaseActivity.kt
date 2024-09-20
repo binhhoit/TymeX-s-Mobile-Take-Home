@@ -24,7 +24,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.WindowCompat
 import androidx.lifecycle.DefaultLifecycleObserver
 import com.base.R
-import com.base.dialog.ConfirmDialog
 import com.base.dialog.ConnectionErrorDialog
 import com.base.dialog.InformDialog
 import com.base.dialog.LoadingDialog
@@ -43,9 +42,6 @@ import com.base.utils.DeviceUtil.Companion.PERMISSION_WRITE_STORAGE_REQUEST_CODE
 import com.base.viewmodel.CommonView
 import retrofit2.HttpException
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 abstract class BaseActivity : AppCompatActivity(), CommonView {
 
     private var mCapturedPath: String? = null
@@ -53,7 +49,6 @@ abstract class BaseActivity : AppCompatActivity(), CommonView {
     private var mLoadingDialog: LoadingDialog? = null
     private var mConnectionErrorDialog: ConnectionErrorDialog? = null
     private var mInformDialog: InformDialog? = null
-    private var mConfirmDialog: ConfirmDialog? = null
     private var mUnknownErrorDialog: UnknownErrorDialog? = null
     protected lateinit var contextLanguage: Context
 
@@ -398,13 +393,6 @@ abstract class BaseActivity : AppCompatActivity(), CommonView {
             mInformDialog = InformDialog(this)
         }
         return mInformDialog!!
-    }
-
-    fun getConfirmDialog(): ConfirmDialog {
-        if (mConfirmDialog == null) {
-            mConfirmDialog = ConfirmDialog(this)
-        }
-        return mConfirmDialog!!
     }
 
     fun getUnknownErrorDialog(): UnknownErrorDialog {
