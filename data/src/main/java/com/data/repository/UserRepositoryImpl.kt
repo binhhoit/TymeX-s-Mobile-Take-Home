@@ -9,6 +9,12 @@ class UserRepositoryImpl constructor(private var localData : SharePreferenceMana
 
     private var firstLoadUsers = true
 
+    /**
+    * The function can load new data when first open app or second request.
+    * If local have data will priority load fist.
+    * @param perPage limit on page
+    * @param since number page request
+    * */
     override suspend fun getListProfileUser(
         perPage: String,
         since: String
@@ -23,6 +29,10 @@ class UserRepositoryImpl constructor(private var localData : SharePreferenceMana
         }
     }
 
+    /**
+    * function load details info user
+    * @param userName the name address for request info user
+    * */
     override suspend fun getUserInfo(userName: String) = serviceAPI.getUserInfo(userName)
 
 

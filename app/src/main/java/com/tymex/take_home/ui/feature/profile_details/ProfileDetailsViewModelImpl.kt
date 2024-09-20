@@ -17,6 +17,12 @@ class ProfileDetailsViewModelImpl(private val usersUseCase: UsersUseCase): Profi
     private val _infoDetailLiveData = MutableLiveData<DataState<UserDTO>>()
     override val infoDetailLiveData get() = _infoDetailLiveData
 
+    /**
+     * The function create flow observer status request data info detail user
+     * Can check status loading, success, catching error
+     * @param userName the name address for request info user
+     * */
+
     override fun getInfoDetailsUser(userName: String) {
         usersUseCase.getProfileUsers(userName)
             .flowOn(Dispatchers.IO)

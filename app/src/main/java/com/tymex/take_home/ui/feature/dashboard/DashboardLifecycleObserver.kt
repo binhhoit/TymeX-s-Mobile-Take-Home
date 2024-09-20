@@ -34,6 +34,9 @@ class DashboardLifecycleObserver(private val fragment: DashboardFragment) :
         }
     }
 
+    /**
+     * The function help observer value when scroll list user to active load more data if last position
+     * */
     private fun initScrollListener() {
         fragment.apply {
             binding.apply {
@@ -56,6 +59,9 @@ class DashboardLifecycleObserver(private val fragment: DashboardFragment) :
 
     }
 
+    /**
+     * The function active loading item and waiting 2s before load new page
+     * */
     private fun loadMore() {
         isLoading = true
         fragment.apply {

@@ -19,7 +19,12 @@ class DashboardViewModelImpl(private val usersUseCase: UsersUseCase): DashboardV
     private val _usersLiveData = MutableLiveData<DataState<List<UserDTO>>>()
     override val usersLiveData get() = _usersLiveData
 
-
+    /**
+     * The function create flow observer status request data list users
+     * Can check status loading, success, catching error
+     * @param perPage limit on page
+     * @param since number page request
+     * */
     override fun getProfileUsers(perPage:String, since:String) {
         usersUseCase.getListProfileUser(perPage, since)
             .flowOn(Dispatchers.IO)

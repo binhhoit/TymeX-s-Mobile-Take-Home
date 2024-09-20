@@ -14,6 +14,9 @@ import com.tymex.takehome.R
 import com.tymex.takehome.databinding.ItemLoadMoreBinding
 import com.tymex.takehome.databinding.ItemUserInfoBinding
 
+/**
+ * The class adapter type data profile user for recycle view.
+ * */
 
 class ProfileUsersAdapter
     : ListAdapter<UserDTO, RecyclerView.ViewHolder>(DIFF_CALLBACK) {
@@ -68,6 +71,9 @@ class ProfileUsersAdapter
         RecyclerView.ViewHolder(binding.root)
 
     companion object {
+        /**
+         * The object can check difference per object UserDTO. reduce render UI listview if add new data.
+         * */
         val DIFF_CALLBACK = object : DiffUtil.ItemCallback<UserDTO>() {
             override fun areItemsTheSame(oldItem: UserDTO, newItem: UserDTO): Boolean {
                 return oldItem.login == newItem.login
