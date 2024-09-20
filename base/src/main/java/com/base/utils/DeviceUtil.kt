@@ -17,9 +17,6 @@ import androidx.core.content.FileProvider
 import java.io.File
 
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 class DeviceUtil {
 
     companion object {

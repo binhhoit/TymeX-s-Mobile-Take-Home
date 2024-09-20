@@ -11,9 +11,6 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import com.base.R
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 abstract class BaseDialog<T : ViewDataBinding>(context: Context) : Dialog(context) {
 
     protected lateinit var mViewDataBinding: T

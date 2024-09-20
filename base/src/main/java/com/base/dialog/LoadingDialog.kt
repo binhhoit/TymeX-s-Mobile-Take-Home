@@ -10,9 +10,6 @@ import com.base.R
 import com.base.databinding.DialogLoadingBinding
 import com.base.utils.getColorWithAlpha
 
-/**
- * Created by vophamtuananh on 1/7/18.
- */
 class LoadingDialog : CustomDimDialogFragment<DialogLoadingBinding>() {
 
     private var isWhiteBackground = false

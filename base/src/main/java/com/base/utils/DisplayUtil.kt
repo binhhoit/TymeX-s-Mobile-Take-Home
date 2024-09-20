@@ -3,9 +3,6 @@ package com.base.utils
 import android.content.Context
 import android.util.TypedValue
 
-/**
- * Created by vophamtuananh on 12/24/17.
- */
 class DisplayUtil {
 
     companion object {

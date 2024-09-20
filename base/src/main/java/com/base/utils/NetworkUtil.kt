@@ -7,9 +7,6 @@ import android.net.NetworkCapabilities
 import android.os.Build
 
 
-/**
- * Created by vophamtuananh on 2/27/18.
- */
 @Suppress("DEPRECATION")
 class NetworkUtil {
 
