@@ -45,6 +45,7 @@ This project uses KtLint, this can be run from the command line via `gradlew ktl
 - When running tests via the ui (using the play button), make sure your Build Variant is in Debug mode.
 - Open "build.gradle(app):119" You can click button play run all test into project and generated coverage report. 
 **Commands to run project tests:
+- Open comment line build.gradle(app):40 testCoverageEnabled = true
 - For local unit tests: "./gradlew testStagingDebugUnitTest", this can also be access in the gradle sidebar.
 ```
 
