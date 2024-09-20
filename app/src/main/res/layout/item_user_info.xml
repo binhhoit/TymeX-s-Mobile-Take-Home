@@ -15,6 +15,7 @@
         android:outlineAmbientShadowColor="@color/black"
         android:outlineSpotShadowColor="@color/black"
         app:cardUseCompatPadding="true"
+        app:cardElevation="@dimen/_3sdp"
         tools:ignore="UnusedAttribute">
 
         <androidx.constraintlayout.widget.ConstraintLayout

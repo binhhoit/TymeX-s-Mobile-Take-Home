@@ -69,6 +69,7 @@
             android:outlineAmbientShadowColor="@color/black"
             android:outlineSpotShadowColor="@color/black"
             app:cardBackgroundColor="@android:color/white"
+            app:cardElevation="@dimen/_3sdp"
             app:cardCornerRadius="@dimen/_10sdp"
             app:cardUseCompatPadding="true"
             android:layout_marginTop="@dimen/_30hsdp"
